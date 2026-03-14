@@ -15,7 +15,7 @@ export default function Terms() {
         <div className="prose prose-stone max-w-none bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-rose-100">
           <h2 className="text-2xl font-bold mt-0 mb-4">§ 1 Informacje ogólne.</h2>
           <p className="mb-4 text-stone-700">
-            1. zonaniematka.pl jest sklepem internetowym, którego właścicielem jest firma Jakub Gugulski, NIP: 6821811984 z siedzibą pod adresem Ratajów 30, 32-090 Słomniki. Adres email: support@zonaniematka.pl. Regulamin określa zasady kupowania produktów na stronie zonaniematka.pl.
+            1. zonaniematka.pl jest sklepem internetowym, którego właścicielem jest firma Jakub Gugulski, NIP: 6821811984 z siedzibą pod adresem Ratajów 30, 32-090 Słomniki. Adres email: zonaniematka@gmail.com. Regulamin określa zasady kupowania produktów na stronie zonaniematka.pl.
           </p>
           <p className="mb-4 text-stone-700">
             2. Dostęp do serwisu jest wolny – każdy może przeglądać jego zawartość, jednak w momencie złożenia zamówienia, osoba taka staje się Klientem i oświadcza, iż zapoznała się z niniejszym Regulaminem oraz Polityką prywatności i w pełni się zgadza z owymi postanowieniami, w innym przypadku zaleca się opuszczenie serwisu.
@@ -26,7 +26,7 @@ export default function Terms() {
 
           <h2 className="text-2xl font-bold mt-8 mb-4">§ 2 Przedmiot serwisu</h2>
           <p className="mb-4 text-stone-700">
-            1. Przedmiotem Serwisu jest dystrybucja produktów ebook oraz treści publikowanych na łamach Serwisu PrawdziwyFacet.pl. Jest on dostarczany do użytkownika dzięki poczcie elektronicznej. Produkt jest wysyłany do klientów w momencie zaksięgowania płatności.
+            1. Przedmiotem Serwisu jest dystrybucja produktów ebook oraz treści publikowanych na łamach Serwisu ZonaNieMatka.pl. Jest on dostarczany do użytkownika dzięki poczcie elektronicznej. Produkt jest wysyłany do klientów w momencie zaksięgowania płatności.
           </p>
           <p className="mb-4 text-stone-700">
             2. Pod pojęciem ‚ebook’ należy rozumieć publikację elektroniczną w postaci pliku komputerowego, będącą odpowiednikiem publikacji treści dokonywanych w tradycyjnych formach (np. książka).
@@ -63,7 +63,7 @@ export default function Terms() {
             2. Prawo odstąpienia od umowy zawartej na odległość nie przysługuje nabywcy w przypadku produktów, które z uwagi na charakter nie mogą zostać zwrócone. Brak możliwości zwrotu dotyczy publikacji elektronicznych.
           </p>
           <p className="mb-4 text-stone-700">
-            3. Reklamacje można składać drogą elektroniczną pod wskazany adres: support@zonaniematka.pl.
+            3. Reklamacje można składać drogą elektroniczną pod wskazany adres: zonaniematka@gmail.com.
           </p>
 
           <h2 className="text-2xl font-bold mt-8 mb-4">§ 5 Postanowienia ogólne.</h2>
