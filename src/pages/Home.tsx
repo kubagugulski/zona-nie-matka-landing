@@ -211,12 +211,12 @@ export default function Home() {
               </p>
               
               <div className="mb-8">
-                <p className="text-5xl font-bold text-rose-600">97 PLN <span className="text-xl text-stone-400 line-through font-normal ml-2">149 PLN</span></p>
+                <p className="text-5xl font-bold text-rose-600">49 PLN <span className="text-xl text-stone-400 line-through font-normal ml-2">149 PLN</span></p>
               </div>
               
-              <button className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-lg hover:shadow-rose-500/30 transform hover:-translate-y-1">
+              <a href="https://buy.stripe.com/test_6oU3co0bdcJb8F96Rx1Jm01" className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-lg hover:shadow-rose-500/30 transform hover:-translate-y-1">
                 Kupuję i odzyskuję spokój
-              </button>
+              </a>
               
               <div className="flex items-center mt-6 text-stone-500 text-sm font-medium">
                 <ShieldCheck className="w-5 h-5 mr-2 text-rose-400" />
@@ -346,12 +346,12 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col items-center">
-              <button 
-                onClick={scrollToOffer}
+              <a 
+                href="https://buy.stripe.com/test_6oU3co0bdcJb8F96Rx1Jm01"
                 className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-lg hover:shadow-rose-500/30 transform hover:-translate-y-1"
               >
                 Kupuję i odzyskuję spokój
-              </button>
+              </a>
               <p className="text-sm text-stone-500 mt-4 font-medium">Natychmiastowy dostęp do Ebooka + Bonusu</p>
             </div>
           </div>
