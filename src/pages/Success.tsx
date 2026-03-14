@@ -2,6 +2,18 @@ import React from 'react';
 import { Download, CheckCircle, HeartHandshake, AlertCircle } from 'lucide-react';
 
 export default function Success() {
+  React.useEffect(() => {
+  const fbq = (window as any).fbq;
+  if (fbq) {
+    fbq('track', 'Purchase', {
+      value: 49.00,
+      currency: 'PLN',
+      content_name: 'Ebook Zona nie matka',
+      content_type: 'product'
+    });
+  }
+}, []);
+
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-stone-800 py-12 px-6 font-sans flex items-center justify-center">
       <div className="max-w-2xl w-full">

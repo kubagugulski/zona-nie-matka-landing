@@ -214,7 +214,13 @@ export default function Home() {
                 <p className="text-5xl font-bold text-rose-600">49 PLN <span className="text-xl text-stone-400 line-through font-normal ml-2">149 PLN</span></p>
               </div>
               
-              <a href="https://buy.stripe.com/8x2cN7gIw5rXdQI7eEbMQ02" className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-lg hover:shadow-rose-500/30 transform hover:-translate-y-1">
+              <a 
+                onClick={() => {
+                const fbq = (window as any).fbq;
+                if (fbq) fbq('track', 'InitiateCheckout');
+              }}
+                href="https://buy.stripe.com/8x2cN7gIw5rXdQI7eEbMQ02" 
+                className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-lg hover:shadow-rose-500/30 transform hover:-translate-y-1">
                 Kupuję i odzyskuję spokój
               </a>
               
@@ -347,6 +353,10 @@ export default function Home() {
             
             <div className="flex flex-col items-center">
               <a 
+                onClick={() => {
+                const fbq = (window as any).fbq;
+                if (fbq) fbq('track', 'InitiateCheckout');
+              }}
                 href="https://buy.stripe.com/8x2cN7gIw5rXdQI7eEbMQ02"
                 className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-lg hover:shadow-rose-500/30 transform hover:-translate-y-1"
               >
