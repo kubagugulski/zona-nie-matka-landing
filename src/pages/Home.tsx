@@ -163,7 +163,7 @@ export default function Home() {
                 desc: "Jak prosić, by zostać usłyszaną. Poznaj zmianę komunikatu, która działa jak magia i sprawia, że on sam chce działać."
               },
               {
-                title: "Rozdział 6: Randka z samym sobą",
+                title: "Rozdział 6: Randka z samą sobą",
                 desc: "Odzyskiwanie kobiecości, własnej przestrzeni i tożsamości poza związkiem. Przypomnij sobie, kim jesteś, gdy nie musisz o nikogo dbać."
               }
             ].map((item, idx) => (
