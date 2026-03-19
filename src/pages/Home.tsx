@@ -1,8 +1,54 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { CheckCircle2, AlertCircle, ArrowRight, ShieldCheck, HeartHandshake, MessageCircle, Quote } from 'lucide-react';
+import React, {useState, useEffect, useRef} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { CheckCircle2, AlertCircle, ArrowRight, ShieldCheck, HeartHandshake, MessageCircle, Quote, X, Gift } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function Home() {
+  const navigate = useNavigate();
+  const [showGamePopup, setShowGamePopup] = useState(false);
+  const [showMiniIcon, setShowMiniIcon] = useState(false);
+  const faqRef = useRef<HTMLElement>(null);
+  const hasTriggered = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        // Wyświetlamy popup po przescrollowaniu, ale tylko raz po załadowaniu strony
+        if (entry.isIntersecting && !hasTriggered.current) {
+          setShowGamePopup(true);
+          hasTriggered.current = true;
+        }
+      },
+      { threshold: 0.2 } // Uruchom, gdy 20% sekcji FAQ będzie widoczne
+    );
+
+    if (faqRef.current) {
+      observer.observe(faqRef.current);
+    }
+
+    return () => {
+      if (faqRef.current) {
+        observer.unobserve(faqRef.current);
+      }
+    };
+  }, []);
+
+  const handlePlayGame = () => {
+    setShowGamePopup(false);
+    navigate('/gra');
+  };
+
+  const handleClosePopup = () => {
+    setShowGamePopup(false);
+    setShowMiniIcon(true);
+  };
+
+  const handleOpenFromIcon = () => {
+    setShowMiniIcon(false);
+    setShowGamePopup(true);
+  };
+
   const scrollToOffer = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     const offerSection = document.getElementById('oferta');
@@ -10,6 +56,7 @@ export default function Home() {
       offerSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 selection:text-stone-900">
@@ -51,25 +98,25 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-stone-900">Czy to brzmi znajomo?</h2>
           <div className="space-y-6 text-lg text-stone-700">
             <div className="flex items-start bg-rose-50/50 p-4 rounded-2xl border border-rose-100/50">
-              <div className="flex-shrink-0 mt-1.5 mr-4">
+              <div className="shrink-0 mt-1.5 mr-4">
                 <div className="w-2 h-2 rounded-full bg-rose-400"></div>
               </div>
               <p><strong>Poprawiasz naczynia w zmywarce</strong>, bo „on to zrobił źle” i wolisz to zrobić po swojemu?</p>
             </div>
             <div className="flex items-start bg-rose-50/50 p-4 rounded-2xl border border-rose-100/50">
-              <div className="flex-shrink-0 mt-1.5 mr-4">
+              <div className="shrink-0 mt-1.5 mr-4">
                 <div className="w-2 h-2 rounded-full bg-rose-400"></div>
               </div>
               <p><strong>Przypominasz mu o wszystkim:</strong> o wizycie u dentysty, urodzinach jego własnej matki i zapłaceniu rachunków?</p>
             </div>
             <div className="flex items-start bg-rose-50/50 p-4 rounded-2xl border border-rose-100/50">
-              <div className="flex-shrink-0 mt-1.5 mr-4">
+              <div className="shrink-0 mt-1.5 mr-4">
                 <div className="w-2 h-2 rounded-full bg-rose-400"></div>
               </div>
               <p>Złapałaś się na tym, że <strong>mówisz do niego tym samym tonem, co do dzieci?</strong></p>
             </div>
             <div className="flex items-start bg-rose-50/50 p-4 rounded-2xl border border-rose-100/50">
-              <div className="flex-shrink-0 mt-1.5 mr-4">
+              <div className="shrink-0 mt-1.5 mr-4">
                 <div className="w-2 h-2 rounded-full bg-rose-400"></div>
               </div>
               <p>Czujesz, że jeśli Ty o czymś nie pomyślisz, to to się po prostu <strong>nie wydarzy?</strong></p>
@@ -169,7 +216,7 @@ export default function Home() {
             ].map((item, idx) => (
               <div key={idx} className="bg-white p-8 rounded-3xl border border-rose-100 hover:border-rose-300 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="flex items-center mb-4">
-                  <CheckCircle2 className="w-6 h-6 text-rose-500 mr-3 flex-shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-rose-500 mr-3 shrink-0" />
                   <h3 className="text-xl font-bold text-stone-800">{item.title}</h3>
                 </div>
                 <p className="text-stone-600 leading-relaxed pl-9">{item.desc}</p>
@@ -180,12 +227,12 @@ export default function Home() {
           {/* Mockup & Główne CTA */}
           <div className="mt-20 bg-white rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-12 shadow-xl border border-rose-100 relative overflow-hidden">
             {/* Subtle background gradient for the CTA box */}
-            <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-rose-50/80 to-transparent pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-full h-full bg-linear-to-bl from-rose-50/80 to-transparent pointer-events-none"></div>
             
             <div className="md:w-1/2 flex justify-center relative z-10">
               {/* CSS Ebook Mockup */}
               <div className="relative w-64 h-80 md:w-72 md:h-96 bg-white rounded-r-2xl rounded-l-sm shadow-2xl flex flex-col items-center justify-center p-6 text-center border-l-8 border-rose-300 transform transition-transform hover:-translate-y-2">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-rose-100 to-orange-50 rounded-r-2xl rounded-l-sm opacity-90"></div>
+                <div className="absolute top-0 left-0 w-full h-full bg-linear-to-tr from-rose-100 to-orange-50 rounded-r-2xl rounded-l-sm opacity-90"></div>
                 <div className="relative z-10">
                   <h3 className="text-3xl md:text-4xl font-bold text-stone-800 mb-4 font-serif leading-tight">Żona,<br/>nie matka</h3>
                   <div className="w-12 h-1 bg-rose-400 mx-auto mb-6"></div>
@@ -195,7 +242,7 @@ export default function Home() {
                   <HeartHandshake className="w-8 h-8 opacity-80" />
                 </div>
                 {/* Book spine effect */}
-                <div className="absolute top-0 left-0 w-4 h-full bg-gradient-to-r from-black/10 to-transparent rounded-l-sm"></div>
+                <div className="absolute top-0 left-0 w-4 h-full bg-linear-to-r from-black/10 to-transparent rounded-l-sm"></div>
                 {/* Page edges effect */}
                 <div className="absolute top-2 right-0 w-1 h-[calc(100%-16px)] bg-stone-100 rounded-r-sm opacity-80"></div>
               </div>
@@ -211,7 +258,7 @@ export default function Home() {
               </p>
               
               <div className="mb-8">
-                <p className="text-5xl font-bold text-rose-600">49 PLN <span className="text-xl text-stone-400 line-through font-normal ml-2">149 PLN</span></p>
+                <p className="text-5xl font-bold text-rose-600">69 PLN <span className="text-xl text-stone-400 line-through font-normal ml-2">149 PLN</span></p>
               </div>
               
               <a 
@@ -219,7 +266,7 @@ export default function Home() {
                 const fbq = (window as any).fbq;
                 if (fbq) fbq('track', 'InitiateCheckout');
               }}
-                href="https://buy.stripe.com/8x2cN7gIw5rXdQI7eEbMQ02" 
+                href="https://buy.stripe.com/aFa28tbocf2x3c442sbMQ03" 
                 className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-lg hover:shadow-rose-500/30 transform hover:-translate-y-1">
                 Kupuję i odzyskuję spokój
               </a>
@@ -297,7 +344,7 @@ export default function Home() {
       </section>
 
       {/* Sekcja FAQ & Domknięcie */}
-      <section className="py-20 px-6 bg-white">
+      <section ref={faqRef} className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center text-stone-900">Najczęściej zadawane pytania</h2>
           <div className="space-y-8 mb-16">
@@ -344,7 +391,7 @@ export default function Home() {
           </div>
 
           <div className="bg-rose-50 rounded-3xl p-8 md:p-12 text-center border border-rose-100 shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-rose-300 via-orange-300 to-rose-300"></div>
+            <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-rose-300 via-orange-300 to-rose-300"></div>
             <ShieldCheck className="w-16 h-16 mx-auto text-rose-500 mb-6" />
             <h3 className="text-2xl font-bold mb-4 text-stone-900">Gwarancja Satysfakcji</h3>
             <p className="text-stone-600 mb-8 max-w-lg mx-auto">
@@ -357,7 +404,7 @@ export default function Home() {
                 const fbq = (window as any).fbq;
                 if (fbq) fbq('track', 'InitiateCheckout');
               }}
-                href="https://buy.stripe.com/8x2cN7gIw5rXdQI7eEbMQ02"
+                href="https://buy.stripe.com/aFa28tbocf2x3c442sbMQ03"
                 className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-lg hover:shadow-rose-500/30 transform hover:-translate-y-1"
               >
                 Kupuję i odzyskuję spokój
@@ -378,6 +425,87 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Game Popup */}
+      <AnimatePresence>
+        {showGamePopup && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/40 backdrop-blur-sm"
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-white rounded-3xl shadow-2xl border border-rose-100 max-w-md w-full p-8 relative overflow-hidden"
+            >
+              {/* Decorative background */}
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-rose-100 rounded-full mix-blend-multiply filter blur-2xl opacity-60 pointer-events-none"></div>
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-orange-100 rounded-full mix-blend-multiply filter blur-2xl opacity-60 pointer-events-none"></div>
+
+              
+              <button 
+                onClick={handleClosePopup}
+                className="absolute top-4 right-4 z-20 text-stone-400 hover:text-stone-600 transition-colors bg-stone-50 hover:bg-stone-100 p-2 rounded-full"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="relative z-10 text-center">
+                <motion.div layoutId="gift-icon" className="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-5 border border-rose-200">
+                  <Gift className="w-8 h-8 text-rose-500" />
+                </motion.div>
+                
+                <h3 className="text-2xl font-bold text-stone-900 mb-3">Niespodzianka! 🎁</h3>
+                <p className="text-stone-600 mb-8 leading-relaxed">
+                  Czy chcesz zagrać w prostą, szybką grę i zdobyć <strong>dodatkowy rabat</strong> na zakup e-booka?
+                </p>
+                
+                <div className="flex flex-col space-y-3">
+                  <button 
+                    onClick={handlePlayGame}
+                    className="w-full py-4 px-6 text-lg font-bold rounded-full bg-rose-500 text-white hover:bg-rose-600 transition-all duration-300 shadow-md hover:shadow-rose-500/30 transform hover:-translate-y-0.5"
+                  >
+                    Tak, chcę zagrać!
+                  </button>
+                  <button 
+                    onClick={handleClosePopup}
+                    className="w-full py-3 px-6 text-stone-500 font-medium rounded-full hover:bg-stone-50 transition-colors"
+                  >
+                    Nie, dziękuję
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mini Icon (when popup is closed) */}
+      <AnimatePresence>
+        {showMiniIcon && (
+          <motion.div
+            layoutId="gift-icon"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleOpenFromIcon}
+            className="fixed top-6 right-6 z-50 w-14 h-14 bg-white rounded-full flex items-center justify-center border-2 border-rose-200 shadow-xl text-rose-500 cursor-pointer group"
+          >
+            <Gift className="w-7 h-7 group-hover:text-rose-600 transition-colors" />
+            <span className="absolute -top-1 -right-1 flex h-4 w-4">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-rose-500 border-2 border-white"></span>
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }
