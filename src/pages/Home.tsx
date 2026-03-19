@@ -320,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* Sekcja Zaufania/Case Study */}
-      <section className="py-24 px-6 bg-[#FAF6F5]">
+      <section ref={faqRef} className="py-24 px-6 bg-[#FAF6F5]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-12 text-stone-900">Z perspektywy kobiety, która to przeszła</h2>
           <div className="bg-white p-10 md:p-12 rounded-3xl shadow-lg border border-rose-100 text-left relative">
@@ -344,7 +344,7 @@ export default function Home() {
       </section>
 
       {/* Sekcja FAQ & Domknięcie */}
-      <section ref={faqRef} className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center text-stone-900">Najczęściej zadawane pytania</h2>
           <div className="space-y-8 mb-16">
