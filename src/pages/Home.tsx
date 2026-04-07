@@ -10,6 +10,25 @@ export default function Home() {
   const faqRef = useRef<HTMLElement>(null);
   const hasTriggered = useRef(false);
 
+  
+//   <div className="fixed bottom-6 right-6 z-50">
+//   <div className="bg-rose-50 border border-rose-200 rounded-full p-1 flex shadow-lg shadow-rose-200/50">
+    
+
+//     <a href="/" className="px-4 py-2 rounded-full bg-rose-500 text-white hover:text-rose-600  text-sm font-medium shadow-sm transition-colors cursor-pointer">
+//       Dla Niej
+//     </a>
+    
+
+//     <a href="/maz" className="px-4 py-2 rounded-full  text-rose-400  hover:text-rose-800  text-sm font-medium transition-colors cursor-pointer">
+//       Dla Niego
+//     </a>
+    
+//   </div>
+// </div>
+
+
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -60,6 +79,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 selection:text-stone-900">
+      
+      
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 px-6 lg:py-32">
         {/* Decorative background elements */}
@@ -277,8 +298,69 @@ export default function Home() {
               </div>
             </div>
           </div>
+          {/* Pakiet VIP Mockup & CTA */}
+          <div className="mt-12 bg-gradient-to-br from-rose-50 to-orange-50 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-12 shadow-xl border-2 border-rose-300 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-full h-full bg-white/40 pointer-events-none"></div>
+            
+            <div className="md:w-1/2 flex justify-center relative z-10">
+              {/* Bundle Mockup */}
+              <div className="relative w-72 h-96 flex items-center justify-center">
+                {/* Book 2 (Back) - Mąż, nie dziecko */}
+                <div className="absolute right-0 top-4 w-56 h-72 md:w-64 md:h-80 bg-white rounded-r-2xl rounded-l-sm shadow-2xl flex flex-col items-center justify-center p-6 text-center border-l-8 border-slate-400 transform rotate-6 transition-transform hover:rotate-12 z-0">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-slate-200 to-slate-50 rounded-r-2xl rounded-l-sm opacity-90"></div>
+                  <div className="relative z-10">
+                    <h3 className="text-2xl md:text-3xl font-bold text-stone-800 mb-4 font-serif leading-tight">Mąż,<br/>nie dziecko</h3>
+                    <div className="w-12 h-1 bg-slate-400 mx-auto mb-6"></div>
+                    <p className="text-stone-600 text-xs md:text-sm uppercase tracking-widest font-medium">Zrozum męską perspektywę</p>
+                  </div>
+                  <div className="absolute top-0 left-0 w-4 h-full bg-gradient-to-r from-black/10 to-transparent rounded-l-sm"></div>
+                  <div className="absolute top-2 right-0 w-1 h-[calc(100%-16px)] bg-stone-100 rounded-r-sm opacity-80"></div>
+                </div>
+                
+                {/* Book 1 (Front) - Żona, nie matka */}
+                <div className="absolute left-0 bottom-4 w-56 h-72 md:w-64 md:h-80 bg-white rounded-r-2xl rounded-l-sm shadow-2xl flex flex-col items-center justify-center p-6 text-center border-l-8 border-rose-300 transform -rotate-6 transition-transform hover:-rotate-12 z-10">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-rose-100 to-orange-50 rounded-r-2xl rounded-l-sm opacity-90"></div>
+                  <div className="relative z-10">
+                    <h3 className="text-2xl md:text-3xl font-bold text-stone-800 mb-4 font-serif leading-tight">Żona,<br/>nie matka</h3>
+                    <div className="w-12 h-1 bg-rose-400 mx-auto mb-6"></div>
+                    <p className="text-stone-600 text-xs md:text-sm uppercase tracking-widest font-medium">System odzyskiwania partnerstwa</p>
+                  </div>
+                  <div className="absolute top-0 left-0 w-4 h-full bg-gradient-to-r from-black/10 to-transparent rounded-l-sm"></div>
+                  <div className="absolute top-2 right-0 w-1 h-[calc(100%-16px)] bg-stone-100 rounded-r-sm opacity-80"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left relative z-10">
+              <span className="inline-block py-1 px-4 rounded-full bg-rose-600 text-white text-sm font-bold mb-4 tracking-wide uppercase shadow-md animate-pulse">
+                🔥 Pakiet VIP (Najczęściej wybierany)
+              </span>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-stone-900">Pełna transformacja</h3>
+              <p className="text-lg text-stone-700 mb-6 font-medium">
+                Odbierz e-book „Żona, nie matka” oraz dodatkowy e-book <strong className="text-slate-800">„Mąż, nie dziecko”</strong>.<br></br><br></br> Naprawcie ten związek <strong className="text-slate-800">RAZEM</strong>.
+              </p>
+              <p className="text-stone-600 mb-8 leading-relaxed">
+Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedykowany poradnik dla Niego, który otworzy mu oczy na to, czego Ty nie możesz go douczyć od lat. To kompletny system operacyjny dla Waszego domu. W zestawie: oba ebooki + bonusowa ściąga „Szybka Riposta” w prezencie!
+              </p>
+              
+              <div className="mb-8">
+                <p className="text-5xl font-bold text-rose-600">119 PLN <span className="text-xl text-stone-400 line-through font-normal ml-2">298 PLN</span></p>
+              </div>
+              
+              <a href="https://buy.stripe.com/dRm00lak89IddQI56wbMQ05" className="w-full md:w-auto px-10 py-5 text-xl font-bold rounded-full bg-rose-600 text-white hover:bg-rose-700 transition-all duration-300 shadow-lg hover:shadow-rose-600/40 transform hover:-translate-y-1">
+                Kupuję pakiet VIP
+              </a>
+              
+              <div className="flex items-center mt-6 text-stone-600 text-sm font-medium">
+                <ShieldCheck className="w-5 h-5 mr-2 text-rose-500" />
+                <span>14 dni gwarancji satysfakcji</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+      
 
       {/* Prezentacja Bonusu */}
       <section className="py-20 px-6 bg-white">
