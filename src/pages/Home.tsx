@@ -1,32 +1,44 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CheckCircle2, AlertCircle, ArrowRight, ShieldCheck, HeartHandshake, MessageCircle, Quote, X, Gift } from 'lucide-react';
+import { CheckCircle2, AlertCircle, ArrowRight, ShieldCheck, HeartHandshake, MessageCircle, Quote, X, Gift, Clock } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Home() {
   const navigate = useNavigate();
   const [showGamePopup, setShowGamePopup] = useState(false);
   const [showMiniIcon, setShowMiniIcon] = useState(false);
+  const [showPromoBanner, setShowPromoBanner] = useState(true);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+
   const faqRef = useRef<HTMLElement>(null);
   const hasTriggered = useRef(false);
 
-  
-//   <div className="fixed bottom-6 right-6 z-50">
-//   <div className="bg-rose-50 border border-rose-200 rounded-full p-1 flex shadow-lg shadow-rose-200/50">
-    
+useEffect(() => {
+    // Countdown timer logic
+    const targetDate = new Date('2026-04-12T23:59:59').getTime();
 
-//     <a href="/" className="px-4 py-2 rounded-full bg-rose-500 text-white hover:text-rose-600  text-sm font-medium shadow-sm transition-colors cursor-pointer">
-//       Dla Niej
-//     </a>
-    
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
 
-//     <a href="/maz" className="px-4 py-2 rounded-full  text-rose-400  hover:text-rose-800  text-sm font-medium transition-colors cursor-pointer">
-//       Dla Niego
-//     </a>
-    
-//   </div>
-// </div>
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000)
+        });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
 
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
 
   useEffect(() => {
@@ -79,7 +91,54 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 selection:text-stone-900">
-      
+        <div className="fixed bottom-6 right-6 z-50">
+          <div className="bg-rose-50 border border-rose-200 rounded-full p-1 flex shadow-lg shadow-rose-200/50">
+            <a href="/" className="px-4 py-2 rounded-full bg-rose-500 text-white hover:text-rose-600  text-sm font-medium shadow-sm transition-colors cursor-pointer">
+              Dla Niej
+            </a>
+            <a href="https://mazniedziecko.pl/" className="px-4 py-2 rounded-full  text-rose-400  hover:text-rose-800  text-sm font-medium transition-colors cursor-pointer">
+              Dla Niego
+            </a>
+    
+  </div>
+</div>
+
+ {/* Promo Banner */}
+       <AnimatePresence>
+        {showPromoBanner && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="sticky top-0 z-50 bg-rose-600 text-white overflow-hidden shadow-md"
+          >
+            <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+              <div className="flex-1 flex flex-col md:flex-row justify-center items-center text-sm md:text-base font-medium text-center gap-2 md:gap-4">
+                <div>
+                  <span className="mr-2">🎉</span>
+                  <span>
+                    Do końca weekendu obowiązuje promocja <strong className="font-bold">-20% na wszystko!</strong> Kod: <span className="bg-white/20 px-2 py-0.5 rounded font-mono font-bold tracking-wider ml-1">PROMO20</span>
+                  </span>
+                </div>
+                <div className="flex items-center bg-black/20 px-3 py-0.5 rounded-full text-sm font-mono font-bold shadow-inner">
+                  <Clock className="w-4 h-4 mr-1.5" />
+                  {timeLeft.days > 0 && <span className="mr-1">{timeLeft.days}d</span>}
+                  <span>{timeLeft.hours.toString().padStart(2, '0')}:</span>
+                  <span>{timeLeft.minutes.toString().padStart(2, '0')}:</span>
+                  <span>{timeLeft.seconds.toString().padStart(2, '0')}</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => setShowPromoBanner(false)}
+                className="p-1 hover:bg-white/20 rounded-full transition-colors flex-shrink-0 ml-2"
+                aria-label="Zamknij banner"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 px-6 lg:py-32">
@@ -402,7 +461,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
       </section>
 
       {/* Sekcja Zaufania/Case Study */}
-      <section ref={faqRef} className="py-24 px-6 bg-[#FAF6F5]">
+      <section className="py-24 px-6 bg-[#FAF6F5]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-12 text-stone-900">Z perspektywy kobiety, która to przeszła</h2>
           <div className="bg-white p-10 md:p-12 rounded-3xl shadow-lg border border-rose-100 text-left relative">
@@ -425,7 +484,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
         </div>
       </section>
 
-      {/* Sekcja FAQ & Domknięcie */}
+      {/* Sekcja FAQ & Domknięcie (ref={faqRef}) */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center text-stone-900">Najczęściej zadawane pytania</h2>

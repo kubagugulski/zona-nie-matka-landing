@@ -19,7 +19,7 @@ export default function SecondLanding() {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-300 font-sans selection:bg-orange-500/30">
       {/* Floating Toggle */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* <div className="fixed bottom-6 right-6 z-50">
         <div className="bg-slate-800 border border-slate-700 rounded-full p-1 flex shadow-2xl shadow-black/50">
           <a href="/" className="px-4 py-2 rounded-full text-slate-400 hover:text-white  text-sm font-medium shadow-sm">
             Dla Niej
@@ -28,7 +28,7 @@ export default function SecondLanding() {
             Dla Niego
           </a>
         </div>
-      </div>
+      </div> */}
 
       <main>
         {/* 1. Hero Section */}
