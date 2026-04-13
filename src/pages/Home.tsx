@@ -16,7 +16,7 @@ export default function Home() {
 
 useEffect(() => {
     // Countdown timer logic
-    const targetDate = new Date('2026-04-12T23:59:59').getTime();
+    const targetDate = new Date('2026-04-13T23:59:59').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -117,7 +117,7 @@ useEffect(() => {
                 <div>
                   <span className="mr-2">🎉</span>
                   <span>
-                    Do końca weekendu obowiązuje promocja <strong className="font-bold">-20% na wszystko!</strong> Kod: <span className="bg-white/20 px-2 py-0.5 rounded font-mono font-bold tracking-wider ml-1">PROMO20</span>
+                    Promocja do końca dnia 13.04 <strong className="font-bold">-20% na wszystko!</strong> Kod: <span className="bg-white/20 px-2 py-0.5 rounded font-mono font-bold tracking-wider ml-1">PROMO20</span>
                   </span>
                 </div>
                 <div className="flex items-center bg-black/20 px-3 py-0.5 rounded-full text-sm font-mono font-bold shadow-inner">
