@@ -274,11 +274,12 @@ export default function App() {
                   <div className="flex flex-col gap-3 w-full max-w-xs">
                     <a href="https://buy.stripe.com/aFa28tbocf2x3c442sbMQ03?prefilled_promo_code=ZONA10" className="flex items-center justify-center w-full gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-emerald-200 hover:shadow-xl hover:-translate-y-1 transition-all active:translate-y-0">
                       <ShoppingBag className="w-5 h-5" />
-                      Przejdź do koszyka
+                      Kup "Żona, nie matka"
                     </a>
-                    <Button onClick={startGame} icon={<RotateCcw className="w-5 h-5" />}>
-                      Zagraj jeszcze raz
-                    </Button>
+                    <a href="https://buy.stripe.com/dRm00lak89IddQI56wbMQ05?prefilled_promo_code=ZONA10" className="flex items-center justify-center w-full gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-emerald-200 hover:shadow-xl hover:-translate-y-1 transition-all active:translate-y-0">
+                      <ShoppingBag className="w-5 h-5" />
+                      Kup pakiet e-booków
+                    </a>
                     <a href="/" className="flex items-center justify-center gap-2 text-gray-500 hover:text-gray-700 font-medium mt-2 hover:underline">
                       <Home className="w-4 h-4" />
                       Powrót

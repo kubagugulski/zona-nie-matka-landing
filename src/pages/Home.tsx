@@ -14,31 +14,31 @@ export default function Home() {
   const faqRef = useRef<HTMLElement>(null);
   const hasTriggered = useRef(false);
 
-useEffect(() => {
-    // Countdown timer logic
-    const targetDate = new Date('2026-04-13T23:59:59').getTime();
+// useEffect(() => {
+//     // Countdown timer logic
+//     const targetDate = new Date('2026-04-13T23:59:59').getTime();
 
-    const updateTimer = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
+//     const updateTimer = () => {
+//       const now = new Date().getTime();
+//       const difference = targetDate - now;
 
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
+//       if (difference > 0) {
+//         setTimeLeft({
+//           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+//           hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+//           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+//           seconds: Math.floor((difference % (1000 * 60)) / 1000)
+//         });
+//       } else {
+//         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+//       }
+//     };
 
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
+//     updateTimer();
+//     const interval = setInterval(updateTimer, 1000);
 
-    return () => clearInterval(interval);
-  }, []);
+//     return () => clearInterval(interval);
+//   }, []);
 
 
   useEffect(() => {
@@ -104,7 +104,7 @@ useEffect(() => {
 </div>
 
  {/* Promo Banner */}
-       <AnimatePresence>
+       {/* <AnimatePresence>
         {showPromoBanner && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
@@ -138,7 +138,7 @@ useEffect(() => {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
       
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 px-6 lg:py-32">
@@ -485,7 +485,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
       </section>
 
       {/* Sekcja FAQ & Domknięcie (ref={faqRef}) */}
-      <section className="py-20 px-6 bg-white">
+      <section ref={faqRef} className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center text-stone-900">Najczęściej zadawane pytania</h2>
           <div className="space-y-8 mb-16">
@@ -625,9 +625,9 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
         )}
       </AnimatePresence>
 
-      {/* Mini Icon (when popup is closed) */}
+      {/* Mini Icon (when popup is closed){showMiniIcon && ( */}
       <AnimatePresence>
-        {showMiniIcon && (
+        
           <motion.div
             layoutId="gift-icon"
             initial={{ opacity: 0, scale: 0.5 }}
@@ -644,7 +644,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
               <span className="relative inline-flex rounded-full h-4 w-4 bg-rose-500 border-2 border-white"></span>
             </span>
           </motion.div>
-        )}
+        
       </AnimatePresence>
 
     </div>
