@@ -14,31 +14,31 @@ export default function Home() {
   const faqRef = useRef<HTMLElement>(null);
   const hasTriggered = useRef(false);
 
-// useEffect(() => {
-//     // Countdown timer logic
-//     const targetDate = new Date('2026-04-13T23:59:59').getTime();
+useEffect(() => {
+    // Countdown timer logic
+    const targetDate = new Date('2026-04-19T23:59:59').getTime();
 
-//     const updateTimer = () => {
-//       const now = new Date().getTime();
-//       const difference = targetDate - now;
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
 
-//       if (difference > 0) {
-//         setTimeLeft({
-//           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-//           hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-//           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-//           seconds: Math.floor((difference % (1000 * 60)) / 1000)
-//         });
-//       } else {
-//         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-//       }
-//     };
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000)
+        });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
 
-//     updateTimer();
-//     const interval = setInterval(updateTimer, 1000);
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
 
-//     return () => clearInterval(interval);
-//   }, []);
+    return () => clearInterval(interval);
+  }, []);
 
 
   useEffect(() => {
@@ -104,7 +104,7 @@ export default function Home() {
 </div>
 
  {/* Promo Banner */}
-       {/* <AnimatePresence>
+       <AnimatePresence>
         {showPromoBanner && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
@@ -117,7 +117,7 @@ export default function Home() {
                 <div>
                   <span className="mr-2">🎉</span>
                   <span>
-                    Promocja do końca dnia 13.04 <strong className="font-bold">-20% na wszystko!</strong> Kod: <span className="bg-white/20 px-2 py-0.5 rounded font-mono font-bold tracking-wider ml-1">PROMO20</span>
+                    Promocja tylko do końca weekendu <strong className="font-bold">-20% na wszystko!</strong> Kod: <span className="bg-white/20 px-2 py-0.5 rounded font-mono font-bold tracking-wider ml-1">PROMO20</span>
                   </span>
                 </div>
                 <div className="flex items-center bg-black/20 px-3 py-0.5 rounded-full text-sm font-mono font-bold shadow-inner">
@@ -138,7 +138,7 @@ export default function Home() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence> */}
+      </AnimatePresence>
       
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 px-6 lg:py-32">
@@ -485,7 +485,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
       </section>
 
       {/* Sekcja FAQ & Domknięcie (ref={faqRef}) */}
-      <section ref={faqRef} className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center text-stone-900">Najczęściej zadawane pytania</h2>
           <div className="space-y-8 mb-16">
@@ -626,7 +626,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
       </AnimatePresence>
 
       {/* Mini Icon (when popup is closed){showMiniIcon && ( */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         
           <motion.div
             layoutId="gift-icon"
@@ -645,7 +645,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
             </span>
           </motion.div>
         
-      </AnimatePresence>
+      </AnimatePresence> */}
 
     </div>
   );
