@@ -16,7 +16,7 @@ export default function Home() {
 
 useEffect(() => {
     // Countdown timer logic
-    const targetDate = new Date('2026-04-19T23:59:59').getTime();
+    const targetDate = new Date('2026-04-26T23:59:59').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -104,7 +104,7 @@ useEffect(() => {
 </div>
 
  {/* Promo Banner */}
-       {/* <AnimatePresence>
+       <AnimatePresence>
         {showPromoBanner && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
@@ -138,7 +138,7 @@ useEffect(() => {
             </div>
           </motion.div>
         )}
-      </AnimatePresence> */}
+      </AnimatePresence>
       
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 px-6 lg:py-32">
@@ -485,7 +485,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
       </section>
 
       {/* Sekcja FAQ & Domknięcie (ref={faqRef}) */}
-      <section ref={faqRef} className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center text-stone-900">Najczęściej zadawane pytania</h2>
           <div className="space-y-8 mb-16">
@@ -626,7 +626,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
       </AnimatePresence>
 
       {/* Mini Icon (when popup is closed){showMiniIcon && ( */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         
           <motion.div
             layoutId="gift-icon"
@@ -645,7 +645,7 @@ Nie bierz wszystkiego na swoje barki. Pakiet zawiera ebooka dla Ciebie oraz dedy
             </span>
           </motion.div>
         
-      </AnimatePresence>
+      </AnimatePresence> */}
 
     </div>
   );
